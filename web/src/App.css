@@ -1,0 +1,6 @@
+@import "~@ornikar/kitt/lib/kitt-default.css";
+
+.App {
+    max-width: 1000px;
+    margin: 50px auto;
+}

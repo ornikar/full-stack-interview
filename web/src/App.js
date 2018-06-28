@@ -1,40 +1,58 @@
 import React, { Component } from 'react';
-import { InputAutocomplete } from '@ornikar/kitt';
-import { Paragraph } from '@ornikar/kitt/typography';
+import { Table, LargeLoader } from '@ornikar/kitt';
 import './App.css';
+
+const { Row, Cell } = Table;
 
 // kitt storybook: https://storybook-static-nxppedxrco.now.sh
 
+const header = {
+  site: 'Site',
+  date: 'Date',
+  time: 'Heure',
+  capacity: 'Capacité',
+};
+
 export default class OrnikarTest extends Component {
   state = {
-    searchValue: null,
-    results: [],
+    loading: true,
   };
 
-  handleInputValueChange = async (newValue) => {
-    this.setState({ searchValue: newValue });
-    const results = await fetch('http://localhost:3000/').then(response => response.json());
-    this.setState({ results });
+  handleAddressChange = async (address) => {
+    console.log(address);
   };
+
+  renderLoading = () => (
+    <div className="Loader">
+      <LargeLoader />
+    </div>
+  )
+
+  renderTable = () => (
+    <Table header={header} showHeader headerAlign="left">
+      <Row>
+        <Cell>
+          1
+        </Cell>
+        <Cell>
+          21/06/2018
+        </Cell>
+        <Cell>
+          12h00
+        </Cell>
+        <Cell>
+          150
+        </Cell>
+      </Row>
+    </Table>
+  )
 
   render() {
-    const { searchValue, results } = this.state;
+    const { loading } = this.state;
 
     return (
       <div className="App">
-        <InputAutocomplete
-          value={searchValue}
-          onInputValueChange={this.handleInputValueChange}
-          itemToString={item => item && item.name}
-        >
-          {results.map(item => (
-            <InputAutocomplete.Item key={item.id} item={item}>
-              <Paragraph>
-                {item.name}
-              </Paragraph>
-            </InputAutocomplete.Item>
-          ))}
-        </InputAutocomplete>
+        {loading ? this.renderLoading() : this.renderTable()}
       </div>
     );
   }

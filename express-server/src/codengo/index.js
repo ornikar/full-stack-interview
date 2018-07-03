@@ -1,11 +1,29 @@
-import fetch from 'node-fetch';
+import faker from 'faker';
+import dateFns from 'date-fns';
 
-const uri = 'http://192.168.2.240:5050/api/v1/';
+const createSession = ({ minDate, maxDate }) => {
+  const capacity = faker.random.number({ min: 30, max: 70 });
 
-export const apiQuery = (path, options) => fetch(uri + '/' + path, options)
-  .then(res => res.json())
-  .catch(err => console.error(err));
+  return {
+    id: faker.random.number({ min: 1, max: 500 }),
+    placeId: faker.random.number({ min: 1, max: 50 }),
+    startAt: faker.date.between(minDate, maxDate),
+    capacity,
+    remainingCapacity: faker.random.number(capacity),
+  };
+};
 
-export const getSessions = () => {
-  return [];
-}
+export const getSessionsForDay = (day = dateFns.startOfToday()) => {
+  // Between 10 and 20
+  const number = Math.random() * 10 + 10;
+  const sessions = [];
+
+  const minDate = dateFns.startOfDay(day);
+  const maxDate = dateFns.endOfDay(day);
+
+  for (let i = 0; i < number; i++) {
+    sessions.push(createSession({ minDate, maxDate }));
+  }
+
+  return sessions
+};

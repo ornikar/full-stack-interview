@@ -38,7 +38,7 @@
     }
   },
   "dependencies": {
-    "@ornikar/kitt": "^5.6.4",
+    "@ornikar/kitt": "^16.11.0",
     "dotenv": "^6.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

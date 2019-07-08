@@ -4,7 +4,7 @@ const http = require('http');
 const https = require('https');
 
 const proxy = require('http-proxy').createProxyServer({
-  target: 'https://codengo-uat.bureauveritas.fr',
+  target: 'https://codengo-uat.bureauveritas.fr/api/v1',
   agent: https.globalAgent,
   headers: {
     host: 'codengo-uat.bureauveritas.fr'

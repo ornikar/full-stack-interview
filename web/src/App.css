@@ -1,4 +1,4 @@
-@import "~@ornikar/kitt/lib/kitt-default.css";
+@import '../node_modules/@ornikar/kitt/dist/kitt-default.css';
 
 .App {
     max-width: 1000px;

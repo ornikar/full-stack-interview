@@ -44,6 +44,20 @@ export default class OrnikarTest extends Component {
           150
         </Cell>
       </Row>
+      <Row>
+        <Cell>
+          2
+        </Cell>
+        <Cell>
+          21/06/2018
+        </Cell>
+        <Cell>
+          13h00
+        </Cell>
+        <Cell>
+          180
+        </Cell>
+      </Row>
     </Table>
   )
 
